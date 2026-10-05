@@ -653,7 +653,7 @@
     });
 
     if (save) {
-      try { localStorage.setItem("svp_launcher_theme", themeName); } catch (e) {}
+      try { localStorage.setItem("web_launcher_theme", themeName); } catch (e) {}
     }
   }
 
@@ -663,16 +663,16 @@
     applyCurtainTheme(nextTheme, true);
   }
 
-  // Restore saved theme or default to crimson
+  // Restore saved theme or default to navy
   try {
-    var savedTheme = localStorage.getItem("svp_launcher_theme");
+    var savedTheme = localStorage.getItem("web_launcher_theme");
     if (savedTheme && THEMES.includes(savedTheme)) {
       applyCurtainTheme(savedTheme, false);
     } else {
-      applyCurtainTheme('crimson', false);
+      applyCurtainTheme('navy', false);
     }
   } catch (e) {
-    applyCurtainTheme('crimson', false);
+    applyCurtainTheme('navy', false);
   }
 
   // Bind swatch button clicks
@@ -707,7 +707,7 @@
   countdownInterval = setInterval(tick, 1000);
 
   // Expose global controller for external triggers or debugging
-  window.SVPCurtainLauncher = {
+  window.WebCurtainLauncher = {
     launch: launch,
     replay: replayCeremony,
     cycleTheme: cycleCurtainTheme,
