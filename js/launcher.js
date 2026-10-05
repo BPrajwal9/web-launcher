@@ -6,42 +6,39 @@
 (function () {
   'use strict';
 
-  // Support dynamic target URL via query string: ?url=https://yourcollegewebsite.com
+  // Support dynamic target URL via query string: ?url=https://yourwebsite.com
   var urlParams = new URLSearchParams(window.location.search);
   var customSiteUrl = urlParams.get('url') || urlParams.get('target') || urlParams.get('site');
 
   // =====================  CONFIGURATION  =====================
   var CONFIG = {
-    college:          "Apex National Institute of Technology & Science",
-    collegeMarathi:   "अपेक्स राष्ट्रीय तंत्रज्ञान व विज्ञान संस्था (डेमो)",
-    trust:            "Apex Higher Education Foundation  \u2022  Estd. 1995",
-    sanskritMotto:    "॥ ज्ञानं परमं ध्येयम् ॥",
     title:            "Grand Website Inauguration",
     subtitle:         "Official Web Portal launching in",
-    doneTitle:        'Empowering Minds, <span class="gold-accent">Shaping the Future</span>',
-    welcome:          "Welcome to the official new digital gateway of Apex National Institute of Technology & Science.",
+    motto:            "INNOVATION  \u2022  EXCELLENCE  \u2022  VISION",
+    doneTitle:        'Welcome to Our <span class="gold-accent">New Digital Experience</span>',
+    welcome:          "Welcome to our official new online portal \u2014 designed for seamless accessibility, modern speed, and innovation.",
 
-    // The countdown starts when the page opens. At 0 the curtains part automatically.
+    // The countdown starts when the page opens. At 0 the curtain lifts automatically.
     countdownSeconds: 5,
 
     // Optional: a fixed launch time instead (e.g. "2026-10-15T11:00:00"). Leave "" to use countdownSeconds.
     launchDate:       "",
 
-    // true = curtains open automatically at 0.
+    // true = curtain lifts automatically at 0.
     autoLaunch:       true,
 
     // Manual "Launch Website" button available anytime
     showLaunchButton: true,
 
     // Live Destination Portal URL (can be overridden via ?url= parameter)
-    siteUrl:          customSiteUrl || "https://example.com",
+    siteUrl:          customSiteUrl || "https://stage.whitecodetech.com/",
 
-    // Royalty-free demo logo & campus photo
-    logoUrl:          "images/institute-logo.svg",
+    // Royalty-free universal portal medallion & architectural backdrop
+    logoUrl:          "images/portal-logo.svg",
     photoUrl:         "images/campus-demo.jpg",
 
     // Remote fallbacks in case of offline cache
-    remoteLogoUrl:    "images/institute-logo.svg",
+    remoteLogoUrl:    "images/portal-logo.svg",
     remotePhotoUrl:   "images/campus-demo.jpg",
 
     // Fireworks duration and celebration duration (10 seconds)
@@ -53,8 +50,8 @@
     // Web Audio synthesizer sound effects enabled
     sound:            true,
 
-    // Default curtain color palette: 'crimson', 'navy', 'emerald', 'obsidian'
-    currentTheme:     'crimson'
+    // Default curtain color palette: 'navy', 'crimson', 'emerald', 'obsidian'
+    currentTheme:     'navy'
   };
   // ===========================================================
 
@@ -62,19 +59,19 @@
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Initialize UI Text
-  if ($("college")) $("college").textContent = CONFIG.college;
-  if ($("college2")) $("college2").textContent = CONFIG.college;
-  if ($("collegeMarathi")) $("collegeMarathi").textContent = CONFIG.collegeMarathi;
-  if ($("collegeMarathi2")) $("collegeMarathi2").textContent = CONFIG.collegeMarathi;
-  if ($("trust")) $("trust").textContent = CONFIG.trust;
-  if ($("trust2")) $("trust2").textContent = CONFIG.trust;
-  if ($("sanskritMotto")) $("sanskritMotto").textContent = CONFIG.sanskritMotto;
+  if ($("sanskritMotto")) $("sanskritMotto").textContent = CONFIG.motto;
   if ($("title")) $("title").textContent = CONFIG.title;
   if ($("sub")) $("sub").textContent = CONFIG.subtitle;
   if ($("doneTitle")) $("doneTitle").innerHTML = CONFIG.doneTitle;
   if ($("welcome")) $("welcome").textContent = CONFIG.welcome;
   if ($("enter")) $("enter").href = CONFIG.siteUrl;
   if ($("liveBtn")) $("liveBtn").href = CONFIG.siteUrl;
+
+  // Cleanly hide any college/trust tags if they exist in DOM
+  ["college", "college2", "collegeMarathi", "collegeMarathi2", "trust", "trust2"].forEach(function (id) {
+    var el = $(id);
+    if (el) el.style.display = "none";
+  });
 
   // Initialize Background Campus Photo with fallback
   var photoEl = $("photo");

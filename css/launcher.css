@@ -296,7 +296,13 @@ section {
 #wait {
   z-index: 6;
   color: #FFFFFF;
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.7, 0, 0.22, 1);
+}
+
+body.open #wait {
+  opacity: 0;
+  transform: translateY(-80px);
+  pointer-events: none;
 }
 
 #wait .trust {
@@ -744,10 +750,13 @@ body.open #done {
    Wide 200px undulating folds with realistic theater lighting physics
    ========================================================================== */
 .curtain {
+  position: fixed;
   z-index: 5;
   top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
-  width: 50.4%;
+  width: 100%;
   background: repeating-linear-gradient(
     90deg, 
     var(--c1) 0px, 
@@ -758,12 +767,12 @@ body.open #done {
     var(--c2) 155px, 
     var(--c1) 200px
   );
-  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.85);
-  transition: transform 2.6s cubic-bezier(0.68, 0, 0.22, 1);
+  box-shadow: inset 0 0 140px rgba(0, 0, 0, 0.85);
+  transition: transform 2.8s cubic-bezier(0.7, 0, 0.22, 1);
   will-change: transform;
 }
 
-/* Stage Lighting: Vertical Falloff + Ambient Center Spotlight */
+/* Stage Lighting: Center Ambient Spotlight */
 .curtain::before {
   content: "";
   position: absolute;
@@ -771,68 +780,39 @@ body.open #done {
   background: 
     linear-gradient(
       180deg, 
-      rgba(0, 0, 0, 0.55) 0%, 
+      rgba(0, 0, 0, 0.6) 0%, 
       rgba(0, 0, 0, 0.12) 18%, 
       transparent 50%, 
-      rgba(0, 0, 0, 0.3) 85%, 
-      rgba(0, 0, 0, 0.65) 100%
+      rgba(0, 0, 0, 0.25) 85%, 
+      rgba(0, 0, 0, 0.7) 100%
     ),
     radial-gradient(
-      ellipse at 100% 45%, 
-      rgba(255, 235, 195, 0.14) 0%, 
+      ellipse at 50% 50%, 
+      rgba(255, 235, 195, 0.15) 0%, 
       transparent 65%
     );
   pointer-events: none;
 }
 
-.curtain.r::before {
-  background: 
-    linear-gradient(
-      180deg, 
-      rgba(0, 0, 0, 0.55) 0%, 
-      rgba(0, 0, 0, 0.12) 18%, 
-      transparent 50%, 
-      rgba(0, 0, 0, 0.3) 85%, 
-      rgba(0, 0, 0, 0.65) 100%
-    ),
-    radial-gradient(
-      ellipse at 0% 45%, 
-      rgba(255, 235, 195, 0.14) 0%, 
-      transparent 65%
-    );
-}
-
-/* Refined Golden Bullion Border Trim at Bottom (Zero Barcode spikes) */
+/* Refined Golden Bullion Border Trim at Bottom */
 .curtain::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 22px;
+  height: 24px;
   background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dark) 45%, rgba(145, 104, 36, 0.5) 100%);
-  border-top: 2px solid var(--gold-light);
-  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.6);
-  opacity: 0.9;
+  border-top: 2.5px solid var(--gold-light);
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.65);
+  opacity: 0.95;
 }
 
-.curtain.l {
-  left: 0;
-  border-right: 1.5px solid var(--gold);
-}
-
-.curtain.r {
-  right: 0;
-  border-left: 1.5px solid var(--gold);
-}
-
-/* Curtains Parting Animation */
-body.open .curtain.l {
-  transform: translateX(-101%);
-}
-
+/* Ceremonial Curtain Lift (Opening Upwards from Below into the Pelmet) */
+body.open .curtain,
+body.open .curtain.l,
 body.open .curtain.r {
-  transform: translateX(101%);
+  transform: translateY(-101%);
 }
 
 /* Top Pelmet Valance: Fabric-Matched Architectural Drapery with Gold Braided Trim */
