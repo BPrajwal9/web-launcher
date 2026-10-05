@@ -1,25 +1,28 @@
 /**
- * SARDAR VALLABHBHAI PATEL ARTS & SCIENCE COLLEGE, AINPUR
- * Grand Ceremonial Curtain Launcher & Inauguration Engine
- * Customized with Original College Assets & Live Portal Destination
+ * GRAND CEREMONIAL VELVET CURTAIN LAUNCHER & INAUGURATION ENGINE
+ * Royalty-Free Demo Showcase Edition with 10-Second Auto-Redirect
  */
 
 (function () {
   'use strict';
 
+  // Support dynamic target URL via query string: ?url=https://yourcollegewebsite.com
+  var urlParams = new URLSearchParams(window.location.search);
+  var customSiteUrl = urlParams.get('url') || urlParams.get('target') || urlParams.get('site');
+
   // =====================  CONFIGURATION  =====================
   var CONFIG = {
-    college:          "Sardar Vallabhbhai Patel Arts & Science College, Ainpur",
-    collegeMarathi:   "सरदार वल्लभभाई पटेल कला व विज्ञान महाविद्यालय, ऐनपूर",
-    trust:            "Ainpur Parisar Shikshan Prasarak Mandal's  \u2022  Estd. 1993",
-    sanskritMotto:    "॥ विद्यया विन्दते अमृतम् ॥",
-    title:            "Our New Digital Campus",
-    subtitle:         "Official Portal launching in",
+    college:          "Apex National Institute of Technology & Science",
+    collegeMarathi:   "अपेक्स राष्ट्रीय तंत्रज्ञान व विज्ञान संस्था (डेमो)",
+    trust:            "Apex Higher Education Foundation  \u2022  Estd. 1995",
+    sanskritMotto:    "॥ ज्ञानं परमं ध्येयम् ॥",
+    title:            "Grand Website Inauguration",
+    subtitle:         "Official Web Portal launching in",
     doneTitle:        'Empowering Minds, <span class="gold-accent">Shaping the Future</span>',
-    welcome:          "Welcome to the official new digital gateway of Sardar Vallabhbhai Patel Arts & Science College, Ainpur.",
+    welcome:          "Welcome to the official new digital gateway of Apex National Institute of Technology & Science.",
 
     // The countdown starts when the page opens. At 0 the curtains part automatically.
-    countdownSeconds: 8,
+    countdownSeconds: 5,
 
     // Optional: a fixed launch time instead (e.g. "2026-10-15T11:00:00"). Leave "" to use countdownSeconds.
     launchDate:       "",
@@ -30,22 +33,22 @@
     // Manual "Launch Website" button available anytime
     showLaunchButton: true,
 
-    // Live Official Portal URL as specified by user
-    siteUrl:          "https://aris.whitecodetech.com/",
+    // Live Destination Portal URL (can be overridden via ?url= parameter)
+    siteUrl:          customSiteUrl || "https://example.com",
 
-    // Original College Logo & College Building Photo
-    logoUrl:          "images/college-logo.png",
-    photoUrl:         "images/Clg.jpeg",
+    // Royalty-free demo logo & campus photo
+    logoUrl:          "images/institute-logo.svg",
+    photoUrl:         "images/campus-demo.jpg",
 
     // Remote fallbacks in case of offline cache
-    remoteLogoUrl:    "https://aris.whitecodetech.com/college-logo.png",
-    remotePhotoUrl:   "https://aris.whitecodetech.com/Home/Clg.jpeg",
+    remoteLogoUrl:    "images/institute-logo.svg",
+    remotePhotoUrl:   "images/campus-demo.jpg",
 
-    // Fireworks duration (seconds) before the "Enter the website" action button appears
-    showcaseSeconds:  6,
+    // Fireworks duration and celebration duration (10 seconds)
+    showcaseSeconds:  10,
 
-    // 0 = off; positive number = automatically open siteUrl after N seconds
-    autoRedirectSeconds: 0,
+    // Automatically open siteUrl after exactly 10 seconds of fireworks!
+    autoRedirectSeconds: 10,
 
     // Web Audio synthesizer sound effects enabled
     sound:            true,
@@ -70,6 +73,8 @@
   if ($("sub")) $("sub").textContent = CONFIG.subtitle;
   if ($("doneTitle")) $("doneTitle").innerHTML = CONFIG.doneTitle;
   if ($("welcome")) $("welcome").textContent = CONFIG.welcome;
+  if ($("enter")) $("enter").href = CONFIG.siteUrl;
+  if ($("liveBtn")) $("liveBtn").href = CONFIG.siteUrl;
 
   // Initialize Background Campus Photo with fallback
   var photoEl = $("photo");
@@ -84,7 +89,7 @@
     bgImg.src = CONFIG.photoUrl;
   }
 
-  // Initialize Original College Logo with fallback
+  // Initialize Demo Institutional Logo with fallback
   function loadLogo() {
     var lg = new Image();
     lg.onload = function () {
@@ -445,41 +450,75 @@
 
   // ---------- GO LIVE TO WEBSITE ----------
   var leaving = false;
-  function goLive() {
+  var redirectInterval = null;
+  var fireworksVolleyInterval = null;
+
+  function goLive(e) {
+    if (e && e.preventDefault) e.preventDefault();
     if (leaving) return;
     leaving = true;
+
+    if (redirectInterval) {
+      clearInterval(redirectInterval);
+      redirectInterval = null;
+    }
+    if (fireworksVolleyInterval) {
+      clearInterval(fireworksVolleyInterval);
+      fireworksVolleyInterval = null;
+    }
+
     var wipe = $("wipe");
     if (wipe) wipe.classList.add("on");
+
+    // Audio chime effect
+    var a = audio();
+    if (a) noise(0.6, 600, 1800, 0.15, "highpass");
+
     setTimeout(function () {
       try {
         (window.top !== window ? window.top : window).location.href = CONFIG.siteUrl;
       } catch (err) {
         window.location.href = CONFIG.siteUrl;
       }
-    }, 850);
+    }, 750);
   }
 
   if ($("enter")) {
     $("enter").addEventListener("click", goLive);
   }
 
-  // ---------- LAUNCH SEQUENCE (CURTAINS PART) ----------
-  var finaleInterval = null;
-  var ongoingInterval = null;
+  // ---------- 10-SECOND CELEBRATION & AUTO-REDIRECT ENGINE ----------
+  function startCelebrationRedirect() {
+    var enterBox = $("enterBox");
+    if (enterBox) enterBox.classList.add("show");
 
-  function showEnter() {
-    if ($("enterBox")) $("enterBox").classList.add("show");
-    var secs = CONFIG.autoRedirectSeconds;
-    if (secs > 0 && $("auto")) {
-      (function count() {
-        $("auto").textContent = "Opening the portal automatically in " + secs + "\u2026";
-        if (secs-- <= 0) {
-          goLive();
-          return;
-        }
-        setTimeout(count, 1000);
-      })();
-    }
+    var totalSeconds = CONFIG.autoRedirectSeconds || 10;
+    var totalMs = totalSeconds * 1000;
+    var startTime = Date.now();
+
+    var barFill = $("redirectBarFill");
+    var timerNum = $("redirectTimer");
+
+    if (barFill) barFill.style.width = "0%";
+    if (timerNum) timerNum.textContent = totalSeconds;
+
+    if (redirectInterval) clearInterval(redirectInterval);
+
+    redirectInterval = setInterval(function () {
+      var elapsed = Date.now() - startTime;
+      var remainingMs = Math.max(0, totalMs - elapsed);
+      var remainingSec = Math.max(0, Math.ceil(remainingMs / 1000));
+      var pct = Math.min(100, (elapsed / totalMs) * 100);
+
+      if (barFill) barFill.style.width = pct + "%";
+      if (timerNum) timerNum.textContent = remainingSec;
+
+      if (remainingMs <= 0) {
+        clearInterval(redirectInterval);
+        redirectInterval = null;
+        goLive();
+      }
+    }, 100);
   }
 
   function launch() {
@@ -505,27 +544,19 @@
     setTimeout(function () {
       rocket(W / 2, "double");
       spawnConfetti(reduce ? 40 : 200);
-    }, 1200);
+    }, 500);
 
-    // Regular fireworks volley during showcase
-    finaleInterval = setInterval(function () {
+    // Continuous fireworks volley throughout the 10-second celebration!
+    fireworksVolleyInterval = setInterval(function () {
       randRocket();
-      if (Math.random() < 0.45) randRocket();
-    }, reduce ? 1400 : 650);
+      if (Math.random() < 0.5) randRocket();
+      if (Math.random() < 0.3) spawnConfetti(reduce ? 15 : 40);
+    }, reduce ? 1000 : 550);
 
-    // Grand finale and reveal the Enter card
+    // Reveal card & start 10-second countdown to automatic redirect
     setTimeout(function () {
-      clearInterval(finaleInterval);
-      for (var i = 0; i < (reduce ? 4 : 14); i++) {
-        setTimeout(randRocket, i * 110);
-      }
-      spawnConfetti(reduce ? 60 : 350);
-
-      setTimeout(function () {
-        showEnter();
-        ongoingInterval = setInterval(randRocket, 1900);
-      }, 2400);
-    }, 1200 + CONFIG.showcaseSeconds * 1000);
+      startCelebrationRedirect();
+    }, 1100);
   }
 
   if ($("go")) {
@@ -552,6 +583,14 @@
 
   // ---------- REPLAY & THEME CONTROLS ----------
   function replayCeremony() {
+    if (fireworksVolleyInterval) {
+      clearInterval(fireworksVolleyInterval);
+      fireworksVolleyInterval = null;
+    }
+    if (redirectInterval) {
+      clearInterval(redirectInterval);
+      redirectInterval = null;
+    }
     if (finaleInterval) clearInterval(finaleInterval);
     if (ongoingInterval) clearInterval(ongoingInterval);
     rockets = [];
@@ -565,6 +604,10 @@
     document.body.classList.remove("open");
     if ($("wipe")) $("wipe").classList.remove("on");
     if ($("enterBox")) $("enterBox").classList.remove("show");
+    var barFill = $("redirectBarFill");
+    if (barFill) barFill.style.width = "0%";
+    var timerNum = $("redirectTimer");
+    if (timerNum) timerNum.textContent = CONFIG.autoRedirectSeconds || 10;
     if ($("wait")) {
       $("wait").style.opacity = "";
       $("wait").style.pointerEvents = "";

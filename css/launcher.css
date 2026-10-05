@@ -602,38 +602,122 @@ body.open #done {
   line-height: 1.45;
 }
 
-/* Action Box for Entering Website */
+/* Action Box for Entering Website & Auto-Redirect Progress */
 .enterbox {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
   padding: 0 10px;
-  transition: max-height 0.8s ease, opacity 0.8s ease, padding 0.8s ease;
+  transition: max-height 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease, padding 0.8s ease;
   pointer-events: none;
+  width: 100%;
 }
 
 .enterbox.show {
-  max-height: 130px;
+  max-height: 240px;
   opacity: 1;
-  padding: 6px 10px 8px;
+  padding: 6px 10px 10px;
   pointer-events: auto;
+}
+
+/* Auto-Redirect Progress Status Card */
+.redirect-card-status {
+  width: 100%;
+  max-width: 440px;
+  background: rgba(15, 31, 56, 0.05);
+  border: 1px solid rgba(229, 185, 100, 0.45);
+  border-radius: 14px;
+  padding: 10px 16px 11px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.redirect-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 7px;
+}
+
+.pulsing-radar {
+  width: 9px;
+  height: 9px;
+  background: #16A34A;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7);
+  animation: radarPulse 1.4s infinite;
+}
+
+@keyframes radarPulse {
+  0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(22, 163, 74, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+}
+
+.redirect-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.redirect-bar-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(15, 31, 56, 0.1);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.redirect-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #DF9414 0%, #F0B03A 50%, #16A34A 100%);
+  border-radius: 999px;
+  transition: width 0.15s linear;
+}
+
+.redirect-note {
+  margin: 7px 0 0;
+  font-size: clamp(12px, 1.6vw, 13.5px);
+  color: #334155;
+  font-weight: 600;
+  text-align: center;
+}
+
+.redirect-note b {
+  color: #B87612;
+  font-size: clamp(14px, 1.8vw, 16px);
+  font-weight: 800;
+}
+
+.auto-hint {
+  margin: 0;
+  font-size: clamp(10.5px, 1.4vw, 12px);
+  color: #64748B;
+  font-style: italic;
+  text-align: center;
 }
 
 .enter {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 13px 36px;
+  padding: 12px 34px;
   border: none;
   border-radius: 999px;
   cursor: pointer;
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: clamp(14px, 2.1vw, 18px);
+  font-size: clamp(14px, 2vw, 17px);
   color: #FFFFFF;
   background: var(--btn-bg);
   box-shadow: var(--btn-shadow);
@@ -654,15 +738,6 @@ body.open #done {
 .enter:hover i {
   transform: translateX(4px);
 }
-
-.auto {
-  margin: 0;
-  font-size: 12.5px;
-  color: #475569;
-  font-weight: 500;
-}
-
-.auto:empty { display: none; }
 
 /* ==========================================================================
    5. REALISTIC CEREMONIAL VELVET CURTAINS & ARCHITECTURAL VALANCE
