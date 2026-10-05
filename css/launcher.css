@@ -1,0 +1,945 @@
+/* ==========================================================================
+   SARDAR VALLABHBHAI PATEL ARTS & SCIENCE COLLEGE, AINPUR
+   GRAND CEREMONIAL CURTAIN LAUNCHER & INAUGURATION ENGINE
+   Curated Luxury Ceremonial Velvet & Royal Gold Design System
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+:root {
+  /* ========================================================================
+     THEME 1: REGAL CRIMSON VELVET & CHAMPAGNE GOLD (Default Ceremonial Theme)
+     Authentic Academic Inauguration Palette: Deep Burgundy Velvet + Rich Gold
+     ======================================================================== */
+  --c1: #240308;         /* Deepest velvet fold shadow */
+  --c2: #420610;         /* Rich ceremonial burgundy */
+  --c-pleat: #630919;    /* Velvet body undulation */
+  --c-sheen: #831024;    /* Subtle silken fold reflection */
+  
+  --gold: #E5B964;       /* Refined Champagne Gold (never brassy/muddy) */
+  --gold-light: #FFF2D1; /* Luminous Champagne highlight */
+  --gold-dark: #916824;  /* Rich Burnished Antique Bronze */
+  --gold-border: rgba(229, 185, 100, 0.45);
+  
+  --ink: #0F1F38;        /* Deep Oxford Navy for text */
+  --accent-theme: #750F22;
+  --accent-pink: #E53B92;/* Official emblem magenta rose */
+  
+  /* Celebration Card Design Tokens (Crystalline, Elegant & High Contrast) */
+  --card-bg: linear-gradient(150deg, rgba(255, 255, 255, 0.98) 0%, rgba(253, 251, 247, 0.95) 100%);
+  --card-border: rgba(255, 255, 255, 0.95);
+  --card-shadow: 0 24px 70px rgba(36, 3, 8, 0.32), 0 0 35px rgba(229, 185, 100, 0.2);
+  
+  --btn-bg: linear-gradient(135deg, #8B1229 0%, #630919 60%, #36040C 100%);
+  --btn-shadow: 0 8px 24px rgba(99, 9, 25, 0.45);
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-display: 'Cinzel', 'Playfair Display', serif;
+  --font-body: 'Poppins', system-ui, -apple-system, sans-serif;
+  --font-num: 'Outfit', 'Poppins', sans-serif;
+}
+
+/* ==========================================================================
+   THEME 2: OXFORD MIDNIGHT NAVY & SOVEREIGN GOLD
+   Majestic Midnight Blue Velvet (Deep, subtle & refined - ZERO electric/cyan!)
+   ========================================================================== */
+body[data-theme="navy"] {
+  --c1: #030810;         /* Abyssal midnight velvet */
+  --c2: #071221;         /* Deep oxford navy */
+  --c-pleat: #0C1D33;    /* Royal navy pleat body */
+  --c-sheen: #142E4E;    /* Soft moonlight velvet sheen */
+  
+  --ink: #061324;
+  --accent-theme: #0A2444;
+  
+  --card-bg: linear-gradient(150deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 251, 255, 0.95) 100%);
+  --card-shadow: 0 24px 70px rgba(3, 8, 16, 0.4), 0 0 35px rgba(229, 185, 100, 0.2);
+  --btn-bg: linear-gradient(135deg, #133B6B 0%, #0A2444 60%, #04101E 100%);
+  --btn-shadow: 0 8px 24px rgba(10, 36, 68, 0.45);
+}
+
+/* ==========================================================================
+   THEME 3: ACADEMIC EMERALD & IMPERIAL GOLD
+   Prestigious botanical forest green velvet with warm gold
+   ========================================================================== */
+body[data-theme="emerald"] {
+  --c1: #020F07;         /* Deep forest shadow */
+  --c2: #051C0F;         /* Rich academic pine */
+  --c-pleat: #092C19;    /* Botanical emerald pleat */
+  --c-sheen: #114227;    /* Soft silk emerald sheen */
+  
+  --ink: #041C10;
+  --accent-theme: #092C19;
+  
+  --card-bg: linear-gradient(150deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 252, 248, 0.95) 100%);
+  --card-shadow: 0 24px 70px rgba(2, 15, 7, 0.4), 0 0 35px rgba(229, 185, 100, 0.2);
+  --btn-bg: linear-gradient(135deg, #14522F 0%, #092C19 60%, #03140A 100%);
+  --btn-shadow: 0 8px 24px rgba(9, 44, 25, 0.45);
+}
+
+/* ==========================================================================
+   THEME 4: ROYAL OBSIDIAN & 24K LIQUID GOLD
+   Ultra-luxurious Black Velvet & Pure Gold Gala aesthetic
+   ========================================================================== */
+body[data-theme="obsidian"] {
+  --c1: #06070A;         /* Deepest onyx shadow */
+  --c2: #0F1117;         /* Midnight charcoal velvet */
+  --c-pleat: #171A24;    /* Obsidian pleat body */
+  --c-sheen: #222634;    /* Subtle graphite silk sheen */
+  
+  --ink: #080A10;
+  --accent-theme: #171A24;
+  
+  --card-bg: linear-gradient(150deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 249, 251, 0.95) 100%);
+  --card-shadow: 0 24px 70px rgba(6, 7, 10, 0.45), 0 0 35px rgba(229, 185, 100, 0.25);
+  --btn-bg: linear-gradient(135deg, #2B3042 0%, #171A24 60%, #080A10 100%);
+  --btn-shadow: 0 8px 24px rgba(23, 26, 36, 0.5);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+body {
+  background: #000000;
+  color: var(--ink);
+  font-family: var(--font-body);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+canvas, section, .curtain, .pelmet, #wipe, #photo {
+  position: fixed;
+}
+
+#fx, #cf {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#fx { z-index: 2; }
+#cf { z-index: 3; }
+
+.serif {
+  font-family: var(--font-serif);
+}
+
+.display-title {
+  font-family: var(--font-display);
+}
+
+/* ==========================================================================
+   1. REVEALED CAMPUS PHOTO (Clg.jpeg)
+   ========================================================================== */
+#photo {
+  inset: 0;
+  z-index: 0;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: scale(1.08);
+  filter: brightness(0.96) saturate(1.05);
+  transition: transform 18s cubic-bezier(0.16, 1, 0.3, 1) 1.2s, filter 2s ease 1s;
+}
+
+#photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg, 
+    rgba(15, 31, 56, 0.35) 0%, 
+    rgba(15, 31, 56, 0.05) 30%, 
+    rgba(255, 255, 255, 0) 65%, 
+    rgba(0, 10, 24, 0.45) 100%
+  );
+}
+
+body.open #photo {
+  transform: scale(1);
+  filter: brightness(1.02) saturate(1.08);
+}
+
+/* ==========================================================================
+   2. COMMON SECTION LAYOUT (Fitted to Viewport: Zero Overflow)
+   ========================================================================== */
+section {
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(5px, 1.3vh, 12px);
+  max-width: 920px;
+  width: 100%;
+  max-height: 92vh;
+}
+
+/* Medallion Seal Presentation for the Original Logo */
+.logo-medallion {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: clamp(70px, 9.5vw, 98px);
+  height: clamp(70px, 9.5vw, 98px);
+  object-fit: contain;
+  background: #FFFFFF;
+  border-radius: 50%;
+  padding: 6px;
+  border: 3px solid var(--gold);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(229, 185, 100, 0.45);
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
+}
+
+.trust {
+  margin: 0;
+  font-size: clamp(11px, 1.4vw, 13px);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.motto-sanskrit {
+  margin: 0;
+  font-size: clamp(12px, 1.45vw, 14.5px);
+  color: var(--gold-light);
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  text-shadow: 0 0 12px rgba(229, 185, 100, 0.4);
+}
+
+.college {
+  margin: 0;
+  font-size: clamp(17px, 2.5vw, 25px);
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  line-height: 1.25;
+}
+
+.college-marathi {
+  margin: -3px 0 0;
+  font-size: clamp(12px, 1.5vw, 14px);
+  font-weight: 500;
+  opacity: 0.92;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(28px, 5.6vw, 58px);
+  line-height: 1.06;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.sub {
+  margin: 0;
+  font-size: clamp(13px, 1.7vw, 15px);
+  font-weight: 500;
+}
+
+/* Ornamental Golden Diamond Divider */
+.rule {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(320px, 65vw);
+  color: var(--gold);
+  margin: 2px 0;
+}
+
+.rule::before, 
+.rule::after {
+  content: "";
+  flex: 1;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, currentColor 60%, transparent);
+  opacity: 0.85;
+}
+
+.rule i {
+  width: 8px;
+  height: 8px;
+  background: currentColor;
+  transform: rotate(45deg);
+  box-shadow: 0 0 10px var(--gold);
+}
+
+/* ==========================================================================
+   3. BEFORE LAUNCH (#wait): Content displayed on closed velvet curtains
+   ========================================================================== */
+#wait {
+  z-index: 6;
+  color: #FFFFFF;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#wait .trust {
+  color: var(--gold-light);
+  opacity: 0.95;
+}
+
+#wait .college {
+  color: #FFFFFF;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.7);
+}
+
+#wait .college-marathi {
+  color: #F1F5F9;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Refined 24K Royal Gold Embossed Title */
+#wait .title {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFF5DE 22%, #F1C974 55%, #D49D34 85%, #916824 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 22px rgba(229, 185, 100, 0.4));
+}
+
+#wait .sub {
+  color: rgba(255, 255, 255, 0.92);
+  font-style: italic;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Countdown Cartouche Box: Elegant Frosted Velvet Glass with Fine Gold Fillet */
+.count {
+  display: flex;
+  gap: clamp(8px, 1.8vw, 16px);
+  margin: 4px 0;
+}
+
+.unit {
+  min-width: clamp(58px, 11vw, 92px);
+  padding: 10px 8px 8px;
+  border-radius: 14px;
+  background: rgba(18, 4, 8, 0.55);
+  border: 1.5px solid var(--gold-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.5),
+    inset 0 0 16px rgba(229, 185, 100, 0.12),
+    0 0 12px rgba(229, 185, 100, 0.18);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+body[data-theme="navy"] .unit {
+  background: rgba(3, 10, 20, 0.6);
+}
+
+body[data-theme="emerald"] .unit {
+  background: rgba(3, 16, 9, 0.6);
+}
+
+body[data-theme="obsidian"] .unit {
+  background: rgba(8, 9, 14, 0.65);
+}
+
+.unit b {
+  display: block;
+  font-family: var(--font-num);
+  font-size: clamp(22px, 4.8vw, 40px);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.05;
+  color: #FFFFFF;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.unit span {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+  color: var(--gold);
+  opacity: 0.95;
+}
+
+/* Solo seconds mode when countdown is under 1 minute */
+.unit.solo {
+  min-width: clamp(110px, 20vw, 165px);
+  padding: 14px 12px 12px;
+  border-radius: 18px;
+}
+
+.unit.solo b {
+  font-size: clamp(50px, 12.5vw, 98px);
+  line-height: 1.02;
+  color: var(--gold-light);
+  text-shadow: 0 0 30px rgba(229, 185, 100, 0.65);
+}
+
+.unit.solo span {
+  font-size: 12.5px;
+  letter-spacing: 2px;
+}
+
+/* Launch Button ("Launch Website") */
+.go {
+  padding: 13px 38px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #FFF4D4 0%, var(--gold) 48%, var(--gold-dark) 100%);
+  color: #2D050D;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: clamp(14px, 2.1vw, 18px);
+  letter-spacing: 0.5px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5), 0 0 22px rgba(229, 185, 100, 0.4);
+  animation: pulseButton 2.4s infinite;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+body[data-theme="navy"] .go {
+  color: #030F1F;
+}
+
+body[data-theme="emerald"] .go {
+  color: #03180D;
+}
+
+body[data-theme="obsidian"] .go {
+  color: #080A10;
+}
+
+.go:hover, 
+.enter:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+}
+
+.go:focus-visible, 
+.enter:focus-visible, 
+.ctrl-btn:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
+}
+
+@keyframes pulseButton {
+  0% {
+    box-shadow: 0 0 0 0 rgba(229, 185, 100, 0.7), 0 10px 28px rgba(0, 0, 0, 0.5);
+  }
+  70%, 100% {
+    box-shadow: 0 0 0 24px rgba(229, 185, 100, 0), 0 10px 28px rgba(0, 0, 0, 0.5);
+  }
+}
+
+body.open #wait {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.95);
+}
+
+/* ==========================================================================
+   4. AFTER LAUNCH (#done): Enhanced Frosted Celebration Card Over Campus Photo
+   ========================================================================== */
+#done {
+  z-index: 4;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease 1.4s, transform 1s cubic-bezier(0.16, 1, 0.3, 1) 1.4s;
+  transform: translateY(20px);
+}
+
+body.open #done {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.card {
+  width: min(720px, 92vw);
+  max-height: 86vh;
+  padding: clamp(14px, 2.2vh, 24px) clamp(16px, 3.5vw, 32px);
+  border-radius: 24px;
+  background: var(--card-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1.5px solid var(--card-border);
+  border-top: 5px solid var(--gold);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(5px, 1.2vh, 10px);
+}
+
+.card .logo {
+  width: clamp(58px, 8.5vw, 78px);
+  height: clamp(58px, 8.5vw, 78px);
+  margin-top: -44px;
+  background: #FFFFFF;
+  border: 3px solid var(--gold);
+}
+
+.card .trust {
+  color: #64748B;
+  font-size: clamp(10px, 1.35vw, 12px);
+  font-weight: 600;
+  letter-spacing: 1.2px;
+}
+
+.card .college {
+  color: var(--accent-theme);
+  font-size: clamp(15px, 2.1vw, 20px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.card .college-marathi {
+  color: #64748B;
+  font-size: clamp(11.5px, 1.5vw, 13.5px);
+  font-weight: 500;
+}
+
+/* Inauguration Tag */
+.portal-live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(229, 185, 100, 0.15);
+  border: 1px solid rgba(229, 185, 100, 0.4);
+  color: var(--accent-theme);
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-size: clamp(10.5px, 1.4vw, 12px);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.portal-live-pill i {
+  color: #16A34A; /* Emerald green check */
+  font-size: 12px;
+}
+
+/* Inspiring Headline with Clean, Cohesive Colors */
+.live-headline {
+  margin: 0;
+  font-size: clamp(22px, 4.2vw, 38px);
+  line-height: 1.15;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+}
+
+.live-headline .gold-accent {
+  background: linear-gradient(135deg, #DF9414 0%, #F0B03A 50%, #B87612 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  font-weight: 800;
+}
+
+/* Institutional Badges Row */
+.card .badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 1px 0;
+}
+
+.badge-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(15, 31, 56, 0.06);
+  border: 1px solid rgba(15, 31, 56, 0.14);
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: clamp(10.5px, 1.4vw, 12px);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.badge-item.pink {
+  background: rgba(229, 59, 146, 0.08);
+  border-color: rgba(229, 59, 146, 0.22);
+  color: #BE185D;
+}
+
+.card .sub {
+  color: #33456b;
+  font-size: clamp(12.5px, 1.7vw, 15px);
+  max-width: 560px;
+  line-height: 1.45;
+}
+
+/* Action Box for Entering Website */
+.enterbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0 10px;
+  transition: max-height 0.8s ease, opacity 0.8s ease, padding 0.8s ease;
+  pointer-events: none;
+}
+
+.enterbox.show {
+  max-height: 130px;
+  opacity: 1;
+  padding: 6px 10px 8px;
+  pointer-events: auto;
+}
+
+.enter {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 36px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(14px, 2.1vw, 18px);
+  color: #FFFFFF;
+  background: var(--btn-bg);
+  box-shadow: var(--btn-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  text-decoration: none;
+}
+
+.enter i {
+  color: var(--gold-light);
+  transition: transform 0.2s ease;
+}
+
+.enter:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+.enter:hover i {
+  transform: translateX(4px);
+}
+
+.auto {
+  margin: 0;
+  font-size: 12.5px;
+  color: #475569;
+  font-weight: 500;
+}
+
+.auto:empty { display: none; }
+
+/* ==========================================================================
+   5. REALISTIC CEREMONIAL VELVET CURTAINS & ARCHITECTURAL VALANCE
+   Wide 200px undulating folds with realistic theater lighting physics
+   ========================================================================== */
+.curtain {
+  z-index: 5;
+  top: 0;
+  bottom: 0;
+  width: 50.4%;
+  background: repeating-linear-gradient(
+    90deg, 
+    var(--c1) 0px, 
+    var(--c2) 45px, 
+    var(--c-pleat) 80px, 
+    var(--c-sheen) 100px,
+    var(--c-pleat) 120px, 
+    var(--c2) 155px, 
+    var(--c1) 200px
+  );
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.85);
+  transition: transform 2.6s cubic-bezier(0.68, 0, 0.22, 1);
+  will-change: transform;
+}
+
+/* Stage Lighting: Vertical Falloff + Ambient Center Spotlight */
+.curtain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(
+      180deg, 
+      rgba(0, 0, 0, 0.55) 0%, 
+      rgba(0, 0, 0, 0.12) 18%, 
+      transparent 50%, 
+      rgba(0, 0, 0, 0.3) 85%, 
+      rgba(0, 0, 0, 0.65) 100%
+    ),
+    radial-gradient(
+      ellipse at 100% 45%, 
+      rgba(255, 235, 195, 0.14) 0%, 
+      transparent 65%
+    );
+  pointer-events: none;
+}
+
+.curtain.r::before {
+  background: 
+    linear-gradient(
+      180deg, 
+      rgba(0, 0, 0, 0.55) 0%, 
+      rgba(0, 0, 0, 0.12) 18%, 
+      transparent 50%, 
+      rgba(0, 0, 0, 0.3) 85%, 
+      rgba(0, 0, 0, 0.65) 100%
+    ),
+    radial-gradient(
+      ellipse at 0% 45%, 
+      rgba(255, 235, 195, 0.14) 0%, 
+      transparent 65%
+    );
+}
+
+/* Refined Golden Bullion Border Trim at Bottom (Zero Barcode spikes) */
+.curtain::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 22px;
+  background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dark) 45%, rgba(145, 104, 36, 0.5) 100%);
+  border-top: 2px solid var(--gold-light);
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.6);
+  opacity: 0.9;
+}
+
+.curtain.l {
+  left: 0;
+  border-right: 1.5px solid var(--gold);
+}
+
+.curtain.r {
+  right: 0;
+  border-left: 1.5px solid var(--gold);
+}
+
+/* Curtains Parting Animation */
+body.open .curtain.l {
+  transform: translateX(-101%);
+}
+
+body.open .curtain.r {
+  transform: translateX(101%);
+}
+
+/* Top Pelmet Valance: Fabric-Matched Architectural Drapery with Gold Braided Trim */
+.pelmet {
+  z-index: 6;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: linear-gradient(180deg, var(--c1) 0%, var(--c2) 60%, var(--c1) 100%);
+  border-bottom: 2.5px solid var(--gold);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+/* Soft Swag Folds Texture on Pelmet */
+.pelmet::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.35) 0px,
+    rgba(255, 255, 255, 0.08) 50px,
+    rgba(0, 0, 0, 0.35) 100px
+  );
+  pointer-events: none;
+}
+
+.pelmet::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg, 
+    var(--gold) 0px 8px, 
+    var(--gold-dark) 8px 12px, 
+    transparent 12px 16px
+  );
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================================================
+   6. CONTROLS BAR & THEME SELECTOR DOCK
+   ========================================================================== */
+.controls-bar {
+  position: fixed;
+  z-index: 10;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(10, 16, 28, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(229, 185, 100, 0.35);
+  border-radius: 999px;
+  padding: 6px 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+}
+
+.ctrl-btn {
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.07);
+  color: #E2E8F0;
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.ctrl-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--gold);
+  color: #FFFFFF;
+}
+
+.ctrl-btn.active {
+  background: rgba(229, 185, 100, 0.2);
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+/* Interactive Color Swatch Chips inside Controls Dock */
+.theme-swatches {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 4px;
+}
+
+.swatch-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.swatch-btn:hover {
+  transform: scale(1.22);
+}
+
+.swatch-btn.active {
+  border-color: #FFFFFF;
+  box-shadow: 0 0 10px var(--gold);
+  transform: scale(1.18);
+}
+
+.swatch-btn.crimson { background: linear-gradient(135deg, #750F22, #36040C); }
+.swatch-btn.navy    { background: linear-gradient(135deg, #133B6B, #04101E); }
+.swatch-btn.emerald { background: linear-gradient(135deg, #14522F, #03140A); }
+.swatch-btn.obsidian{ background: linear-gradient(135deg, #2B3042, #080A10); }
+
+/* ==========================================================================
+   7. RADIAL LIGHT FLASH WIPE SCREEN
+   ========================================================================== */
+#wipe {
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 1) 0%, rgba(255, 245, 220, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
+  transition: opacity 0.5s ease-out;
+}
+
+#wipe.on {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   8. RESPONSIVE VIEWPORT ADAPTATIONS
+   ========================================================================== */
+@media (max-height: 720px) {
+  .wrap {
+    gap: 4px;
+  }
+  .unit {
+    padding: 6px 6px 5px;
+  }
+  .unit b {
+    font-size: 24px;
+  }
+  .unit.solo b {
+    font-size: 52px;
+  }
+  .go {
+    padding: 10px 28px;
+    font-size: 14px;
+  }
+  .card {
+    padding: 12px 18px;
+    gap: 4px;
+  }
+  .live-headline {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 640px) {
+  .controls-bar {
+    right: 8px;
+    bottom: 8px;
+    padding: 4px 8px;
+    gap: 5px;
+  }
+  .ctrl-btn span {
+    display: none;
+  }
+  .ctrl-btn {
+    padding: 6px 8px;
+  }
+}

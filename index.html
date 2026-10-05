@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Official Website Inauguration — Sardar Vallabhbhai Patel Arts & Science College, Ainpur</title>
+  <meta name="description" content="Official website inauguration and grand curtain opening ceremony for Sardar Vallabhbhai Patel Arts & Science College, Ainpur. Affiliated to KBC NMU Jalgaon.">
+  
+  <!-- Original College Favicon -->
+  <link rel="icon" type="image/png" href="images/college-logo.png">
+
+  <!-- Typography: Google Fonts (Poppins, Playfair Display, Cinzel, Outfit) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Standalone Ceremonial Curtain Launcher CSS -->
+  <link rel="stylesheet" href="css/launcher.css">
+</head>
+<body>
+
+  <!-- 1. SUNNY CAMPUS PHOTO (Clg.jpeg: Revealed smoothly as the velvet curtains part) -->
+  <div id="photo" aria-hidden="true"></div>
+
+  <!-- 2. DUAL FIREWORKS & CONFETTI CANVASES -->
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <canvas id="cf" aria-hidden="true"></canvas>
+
+  <!-- 3. AFTER LAUNCH (#done): Enhanced Frosted Celebration Card Over Campus Photo -->
+  <section id="done">
+    <div class="card">
+      
+      <div class="logo-medallion">
+        <img class="logo" id="logo2" alt="SVP College Official Seal" hidden>
+      </div>
+
+      <p class="trust" id="trust2">Ainpur Parisar Shikshan Prasarak Mandal's &bull; Estd. 1993</p>
+      
+      <p class="college serif" id="college2">Sardar Vallabhbhai Patel Arts &amp; Science College, Ainpur</p>
+      <p class="college-marathi" id="collegeMarathi2">सरदार वल्लभभाई पटेल कला व विज्ञान महाविद्यालय, ऐनपूर</p>
+      
+      <!-- Inauguration Pill Tag -->
+      <div class="portal-live-pill">
+        <i class="fas fa-check-circle"></i> Official Portal Inauguration
+      </div>
+
+      <!-- New Inspiring Headline (Replacing "Our Official Portal is Live!") -->
+      <h2 class="live-headline serif" id="doneTitle">
+        Empowering Minds, <span class="gold-accent">Shaping the Future</span>
+      </h2>
+      
+      <!-- Institutional Badges -->
+      <div class="badges-row">
+        <span class="badge-item"><i class="fas fa-university"></i> KBC NMU Affiliated</span>
+        <span class="badge-item pink"><i class="fas fa-award"></i> NAAC Reaccredited 'B' Grade</span>
+        <span class="badge-item"><i class="fas fa-shield-alt"></i> Linguistic Minority College</span>
+      </div>
+
+      <p class="sub" id="welcome">Welcome to the official new digital gateway of Sardar Vallabhbhai Patel Arts &amp; Science College, Ainpur.</p>
+      
+      <div class="enterbox" id="enterBox">
+        <a class="enter" id="enter" href="https://aris.whitecodetech.com/" aria-label="Enter Official Website">
+          <span>Enter Official Website</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <p class="auto" id="auto" aria-live="polite"></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. REALISTIC VELVET CURTAINS & GOLDEN TOP PELMET VALANCE -->
+  <div class="curtain l"></div>
+  <div class="curtain r"></div>
+  <div class="pelmet"></div>
+
+  <!-- 5. BEFORE LAUNCH (#wait): Ceremonial Announcements & Countdown on Curtains -->
+  <section id="wait">
+    <div class="wrap">
+      
+      <!-- Original College Emblem Medallion -->
+      <div class="logo-medallion">
+        <img class="logo" id="logo" alt="Sardar Vallabhbhai Patel College Official Seal" hidden>
+      </div>
+
+      <p class="trust" id="trust">Ainpur Parisar Shikshan Prasarak Mandal's &bull; Estd. 1993</p>
+      <p class="motto-sanskrit" id="sanskritMotto">॥ विद्यया विन्दते अमृतम् ॥</p>
+      
+      <p class="college serif" id="college">Sardar Vallabhbhai Patel Arts &amp; Science College, Ainpur</p>
+      <p class="college-marathi" id="collegeMarathi">सरदार वल्लभभाई पटेल कला व विज्ञान महाविद्यालय, ऐनपूर</p>
+      
+      <h1 class="title display-title" id="title">Our New Digital Campus</h1>
+      
+      <!-- Ornamental Golden Diamond Bar -->
+      <div class="rule" aria-hidden="true"><i></i></div>
+      
+      <p class="sub" id="sub">Official Portal launching in</p>
+      
+      <!-- Countdown Unit Blocks -->
+      <div class="count" id="count" role="timer" aria-live="off">
+        <div class="unit"><b id="d">00</b><span>Days</span></div>
+        <div class="unit"><b id="h">00</b><span>Hours</span></div>
+        <div class="unit"><b id="m">00</b><span>Minutes</span></div>
+        <div class="unit"><b id="s">00</b><span>Seconds</span></div>
+      </div>
+
+      <!-- Pulsing Golden Inauguration Button -->
+      <button class="go" id="go" aria-label="Launch Website Now">
+        <i class="fas fa-play"></i> Launch Website
+      </button>
+
+    </div>
+  </section>
+
+  <!-- 6. FLOATING INTERACTIVE CONTROLS BAR -->
+  <aside class="controls-bar" aria-label="Ceremony Controls">
+    <button id="replayBtn" class="ctrl-btn" title="Replay the grand curtain opening (Shortcut: R)">
+      <i class="fas fa-redo-alt"></i> <span>Replay</span>
+    </button>
+    <div class="theme-swatches" id="themeSwatches" title="Select Curtain Color Palette">
+      <button class="swatch-btn crimson active" data-theme-name="crimson" title="Theme: Regal Crimson Velvet"></button>
+      <button class="swatch-btn navy" data-theme-name="navy" title="Theme: Oxford Midnight Navy"></button>
+      <button class="swatch-btn emerald" data-theme-name="emerald" title="Theme: Academic Emerald"></button>
+      <button class="swatch-btn obsidian" data-theme-name="obsidian" title="Theme: Royal Obsidian"></button>
+    </div>
+    <button id="themeToggle" class="ctrl-btn" title="Cycle between color palettes">
+      <i class="fas fa-palette"></i> <span id="themeLabel">Crimson Velvet</span>
+    </button>
+    <button id="snd" class="ctrl-btn active" type="button" aria-pressed="true" title="Toggle fireworks & curtain audio effects">
+      <i class="fas fa-volume-up"></i> <span id="sndLabel">Sound: ON</span>
+    </button>
+    <a href="https://aris.whitecodetech.com/" target="_blank" rel="noopener noreferrer" class="ctrl-btn" title="Visit Live aris.whitecodetech.com directly">
+      <i class="fas fa-external-link-alt"></i> <span>Live Site</span>
+    </a>
+  </aside>
+
+  <!-- 7. RADIAL LIGHT FLASH WIPE SCREEN -->
+  <div id="wipe"></div>
+
+  <!-- Standalone Ceremonial Launcher JavaScript -->
+  <script src="js/launcher.js"></script>
+</body>
+</html>
